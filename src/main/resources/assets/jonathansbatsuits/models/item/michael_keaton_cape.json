@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jonathansbatsuits:item/michael_keaton_cape"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "broken": 1
+      },
+      "model": "jonathansbatsuits:item/torn_robert_pattinson_cape"
+    }
+  ]
+}

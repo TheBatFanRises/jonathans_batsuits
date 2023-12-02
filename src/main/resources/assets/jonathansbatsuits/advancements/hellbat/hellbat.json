@@ -1,0 +1,52 @@
+{
+    "parent": "jonathansbatsuits:root",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:hellbat_helmet"
+        },
+        "title": {
+            "text": "The Armor That Survived Darksied."
+        },
+        "description": {
+            "text": "Craft The Hellbat."
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_hellbat": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:hellbat_helmet"
+                        ]
+                    },
+                    {
+                        "items": [
+                            "jonathansbatsuits:hellbat_chestplate"
+                        ]
+                    },
+                    {
+                        "items": [
+                            "jonathansbatsuits:hellbat_leggings"
+                        ]
+                    },
+                    {
+                        "items": [
+                            "jonathansbatsuits:hellbat_boots"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_hellbat"
+        ]
+    ]
+}

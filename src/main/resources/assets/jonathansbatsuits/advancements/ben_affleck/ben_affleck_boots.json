@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:ben_affleck/ben_affleck_leggings",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:ben_affleck_boots"
+        },
+        "title": {
+            "text": "Men Are Still Good."
+        },
+        "description": {
+            "text": "Craft Ben Affleck's Boots"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_ben_affleck_boots": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:ben_affleck_boots"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_ben_affleck_boots"
+        ]
+    ]
+}

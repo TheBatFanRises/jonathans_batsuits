@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:michael_keaton/michael_keaton_leggings",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:michael_keaton_boots"
+        },
+        "title": {
+            "text": "You Ever Dance With The Devil In The Pale Moonlight?"
+        },
+        "description": {
+            "text": "Craft Michael Keaton's Boots"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_michael_keaton_boots": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:michael_keaton_boots"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_michael_keaton_boots"
+        ]
+    ]
+}

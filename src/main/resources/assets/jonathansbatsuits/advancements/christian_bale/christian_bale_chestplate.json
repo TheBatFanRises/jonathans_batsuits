@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:christian_bale/christian_bale_cowl",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:christian_bale_chestplate"
+        },
+        "title": {
+            "text": "I'm Not Wearing Hockey Pads!"
+        },
+        "description": {
+            "text": "Craft Christian Bale's Chestplate"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_christian_bale_chestplate": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:christian_bale_chestplate"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_christian_bale_chestplate"
+        ]
+    ]
+}

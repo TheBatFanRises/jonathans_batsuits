@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:adam_west/adam_west_leggings",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:adam_west_boots"
+        },
+        "title": {
+            "text": "Same Bat-Time, Same Bat-Channel!"
+        },
+        "description": {
+            "text": "Craft Adam West's Boots."
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_adam_west_boots": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:adam_west_boots"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_adam_west_boots"
+        ]
+    ]
+}

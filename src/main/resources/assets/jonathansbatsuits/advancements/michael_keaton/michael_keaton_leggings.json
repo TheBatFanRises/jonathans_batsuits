@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:michael_keaton/michael_keaton_chestplate",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:michael_keaton_leggings"
+        },
+        "title": {
+            "text": "Now You Wanna Get Nuts!? Come On! Let's Get Nuts!"
+        },
+        "description": {
+            "text": "Craft Michael Keaton's Leggings"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_michael_keaton_leggings": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:michael_keaton_leggings"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_michael_keaton_leggings"
+        ]
+    ]
+}

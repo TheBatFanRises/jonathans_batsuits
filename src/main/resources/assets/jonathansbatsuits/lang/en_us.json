@@ -1,0 +1,142 @@
+{
+  "itemgroup.live_action_batsuits": "Live Action Batsuits",
+  "itemgroup.my_custom_batsuits": "My Custom Batsuits",
+  "itemgroup.situational_batsuits": "Situational Batsuits",
+  "itemgroup.base_capes": "Base Capes",
+  "itemgroup.the_conroy_legacy": "6c6567616379",
+  "itemgroup.gadgets": "Gadgets",
+  "itemgroup.visionsteps_items": "VisionSteps Items",
+
+  "item.jonathansbatsuits.adam_west_cowl": "Adam West Cowl",
+  "item.jonathansbatsuits.adam_west_chestplate": "Adam West Chestplate",
+  "item.jonathansbatsuits.adam_west_leggings": "Adam West Leggings",
+  "item.jonathansbatsuits.adam_west_boots": "Adam West Boots",
+
+  "item.jonathansbatsuits.michael_keaton_cowl": "Michael Keaton Cowl",
+  "item.jonathansbatsuits.michael_keaton_chestplate": "Michael Keaton Chestplate",
+  "item.jonathansbatsuits.michael_keaton_leggings": "Michael Keaton Leggings",
+  "item.jonathansbatsuits.michael_keaton_boots": "Michael Keaton Boots",
+
+  "item.jonathansbatsuits.christian_bale_cowl": "Christian Bale Cowl",
+  "item.jonathansbatsuits.christian_bale_chestplate": "Christian Bale Chestplate",
+  "item.jonathansbatsuits.christian_bale_leggings": "Christian Bale Leggings",
+  "item.jonathansbatsuits.christian_bale_boots": "Christian Bale Boots",
+
+  "item.jonathansbatsuits.ben_affleck_cowl": "Ben Affleck Cowl",
+  "item.jonathansbatsuits.ben_affleck_chestplate": "Ben Affleck Chestplate",
+  "item.jonathansbatsuits.ben_affleck_leggings": "Ben Affleck Leggings",
+  "item.jonathansbatsuits.ben_affleck_boots": "Ben Affleck Boots",
+
+  "item.jonathansbatsuits.robert_pattinson_cowl": "Robert Pattinson Cowl",
+  "item.jonathansbatsuits.robert_pattinson_cape": "Robert Pattinson Cape",
+  "item.jonathansbatsuits.robert_pattinson_leggings": "Robert Pattinson Leggings",
+  "item.jonathansbatsuits.robert_pattinson_boots": "Robert Pattinson Boots",
+
+  "item.jonathansbatsuits.jonathans_batsuit_cowl": "Jonathan's Batsuit Cowl",
+  "item.jonathansbatsuits.jonathans_batsuit_chestplate": "Jonathan's Batsuit Chestplate",
+  "item.jonathansbatsuits.jonathans_batsuit_leggings": "Jonathan's Batsuit Leggings",
+  "item.jonathansbatsuits.jonathans_batsuit_boots": "Jonathan's Batsuit Boots",
+
+  "item.jonathansbatsuits.arctic_suit_cowl": "Arctic Suit Cowl",
+  "item.jonathansbatsuits.arctic_suit_chestplate": "Arctic Suit Chestplate",
+  "item.jonathansbatsuits.arctic_suit_leggings": "Arctic Suit Leggings",
+  "item.jonathansbatsuits.arctic_suit_boots": "Arctic Suit Boots",
+
+  "item.jonathansbatsuits.thermal_suit_cowl": "Thermal Suit Cowl",
+  "item.jonathansbatsuits.thermal_suit_chestplate": "Thermal Suit Chestplate",
+  "item.jonathansbatsuits.thermal_suit_leggings": "Thermal Suit Leggings",
+  "item.jonathansbatsuits.thermal_suit_boots": "Thermal Suit Boots",
+
+  "item.jonathansbatsuits.battle_armor_v1_helmet": "Battle Armor v1 Helmet",
+  "item.jonathansbatsuits.battle_armor_v1_chestplate": "Battle Armor v1 Chestplate",
+  "item.jonathansbatsuits.battle_armor_v1_leggings": "Battle Armor v1 Leggings",
+  "item.jonathansbatsuits.battle_armor_v1_boots": "Battle Armor v1 Boots",
+
+  "item.jonathansbatsuits.scuba_suit_breathing_apparatus": "Scuba Suit Breathing Apparatus",
+  "item.jonathansbatsuits.scuba_suit_wetsuit": "Scuba Suit Wetsuit",
+  "item.jonathansbatsuits.scuba_suit_leggings": "Scuba Suit Leggings",
+  "item.jonathansbatsuits.scuba_suit_flippers": "Scuba Suit Flippers",
+
+  "item.jonathansbatsuits.stealth_suit_cowl": "Stealth Suit Cowl",
+  "item.jonathansbatsuits.stealth_suit_chestplate": "Stealth Suit Chestplate",
+  "item.jonathansbatsuits.stealth_suit_leggings": "Stealth Suit Leggings",
+  "item.jonathansbatsuits.stealth_suit_boots": "Stealth Suit Boots",
+
+  "item.jonathansbatsuits.tas_cowl": "54415320436f776c",
+  "item.jonathansbatsuits.tas_chestplate": "544153204368657374706c617465",
+  "item.jonathansbatsuits.tas_leggings": "544153204c656767696e6773",
+  "item.jonathansbatsuits.tas_boots": "54415320426f6f7473",
+
+  "item.jonathansbatsuits.tnba_cowl": "544e424120436f776c",
+  "item.jonathansbatsuits.tnba_chestplate": "544e4241204368657374706c617465",
+  "item.jonathansbatsuits.tnba_leggings": "544e4241204c656767696e6773",
+  "item.jonathansbatsuits.tnba_boots": "544e424120426f6f7473",
+
+  "item.jonathansbatsuits.batman_beyond_cowl": "4261746D616E204265796F6E6420436F776C",
+  "item.jonathansbatsuits.batman_beyond_chestplate": "4261746d616e204265796f6e64204368657374706c617465",
+  "item.jonathansbatsuits.batman_beyond_leggings": "4261746d616e204265796f6e64204c656767696e6773",
+  "item.jonathansbatsuits.batman_beyond_boots": "4261746d616e204265796f6e6420426f6f7473",
+
+  "item.jonathansbatsuits.arkham_asylum_cowl": "41726b68616d204173796c756d20436f776c",
+  "item.jonathansbatsuits.arkham_asylum_chestplate": "41726b68616d204173796c756d204368657374706c617465",
+  "item.jonathansbatsuits.arkham_asylum_leggings": "41726b68616d204173796c756d204c656767696e6773",
+  "item.jonathansbatsuits.arkham_asylum_boots": "41726b68616d204173796c756d20426f6f7473",
+
+  "item.jonathansbatsuits.hellbat_helmet": "Hellbat Helmet",
+  "item.jonathansbatsuits.hellbat_chestplate": "Hellbat Chestplate",
+  "item.jonathansbatsuits.hellbat_leggings": "Hellbat Leggings",
+  "item.jonathansbatsuits.hellbat_boots": "Hellbat Boots",
+
+  "item.jonathansbatsuits.black_cape": "Black Cape",
+  "item.jonathansbatsuits.blue_cape": "Blue Cape",
+
+  "item.jonathansbatsuits.batarang": "Batarang",
+  "item.jonathansbatsuits.laced_batarang": "Laced Batarang",
+  "item.jonathansbatsuits.smoke_pellet": "Smoke Pellet",
+  "item.jonathansbatsuits.bat_glider" : "Bat-Glider",
+  "item.jonathansbatsuits.detective_vision_lenses" : "Detective Vision Lenses",
+
+
+  "item.jonathansbatsuits.torn_adam_west_cape": "Torn Adam West Cape",
+  "item.jonathansbatsuits.torn_michael_keaton_cape": "Torn Michael Keaton Cape",
+  "item.jonathansbatsuits.torn_christian_bale_cape": "Torn Christian Bale Cape",
+  "item.jonathansbatsuits.torn_ben_affleck_cape": "Torn Ben Affleck Cape",
+  "item.jonathansbatsuits.torn_robert_pattinson_cape": "Torn Robert Pattinson Cape",
+  "item.jonathansbatsuits.torn_jonathans_batsuit_cape": "Torn Jonathan's Batsuit Cape",
+
+  "item.jonathansbatsuits.laced_batarang.effect.empty": "Uncraftable Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.water": "Splashing Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.mundane": "Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.thick": "Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.awkward": "Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.night_vision": "Night Vision Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.invisibility": "Invisibility Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.leaping": "Leaping Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.fire_resistance": "Fire Resistance Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.swiftness": "Swiftness Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.slowness": "Slowness Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.water_breathing": "Water Breathing Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.healing": "Healing Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.harming": "Harming Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.poison": "Poison Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.regeneration": "Regeneration Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.strength": "Strength Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.weakness": "Weakness Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.levitation": "Levitation Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.luck": "Luck Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.turtle_master": "Turtle Master Laced Batarang",
+  "item.jonathansbatsuits.laced_batarang.effect.slow_falling": "Slow Falling Laced Batarang",
+
+  "item.jonathansbatsuits.primordial_energy": "Primordial Energy",
+
+  "key.category.jonathansbatsuits.batsuits": "Jonathan's Batsuits Keys",
+  "key.jonathansbatsuits.batsuit_ability": "Batsuit Ability",
+  "key.jonathansbatsuits.detective_vision": "Detective Vision Toggle",
+  "key.jonathansbatsuits.batman_beyond_jets": "Batman Beyond Jets",
+
+  "effect.jonathansbatsuits.life_force_drain": "Life Force Drain",
+
+  "attack.death.batarang": "Batarang",
+  "attack.death.hellbat": "Hellbat",
+  "attack.death.bat_dart": "Bat-Dart"
+}

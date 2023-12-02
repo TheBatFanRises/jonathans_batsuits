@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "addition": {
+    "item": "jonathansbatsuits:black_cape"
+  },
+  "base": {
+    "item": "jonathansbatsuits:ben_affleck_chestplate"
+  },
+  "result": {
+    "item": "jonathansbatsuits:ben_affleck_cape"
+  }
+}

@@ -1,0 +1,52 @@
+{
+    "parent": "jonathansbatsuits:root",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:battle_armor_v1_helmet"
+        },
+        "title": {
+            "text": "In Extreme Cases."
+        },
+        "description": {
+            "text": "Craft The Battle Armor."
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_battle_armor": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:battle_armor_v1_helmet"
+                        ]
+                    },
+                    {
+                        "items": [
+                            "jonathansbatsuits:battle_armor_v1_chestplate"
+                        ]
+                    },
+                    {
+                        "items": [
+                            "jonathansbatsuits:battle_armor_v1_leggings"
+                        ]
+                    },
+                    {
+                        "items": [
+                            "jonathansbatsuits:battle_armor_v1_boots"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_battle_armor"
+        ]
+    ]
+}

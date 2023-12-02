@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:christian_bale/christian_bale_chestplate",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:christian_bale_leggings"
+        },
+        "title": {
+            "text": "Why Do We Fall, Sir? So That We Can Learn To Pick Ourselves Back Up."
+        },
+        "description": {
+            "text": "Craft Christian Bale's Chestplate"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_christian_bale_leggings": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:christian_bale_leggings"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_christian_bale_leggings"
+        ]
+    ]
+}

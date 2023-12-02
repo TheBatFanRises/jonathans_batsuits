@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jonathansbatsuits:item/jonathans_batsuit_cape"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "broken": 1
+      },
+      "model": "jonathansbatsuits:item/torn_jonathans_batsuit_cape"
+    }
+  ]
+}

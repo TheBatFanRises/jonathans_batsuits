@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "package": "net.jonathan.jonathansbatsuits.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "DisableArmorRenderer",
+    "ExampleMixin",
+    "JonathansBatsuitsMixin",
+    "LacedBatarangColor",
+    "LifeForceDrainMilkImmunity",
+    "PowderSnowExemption",
+    "RocketItemMixin",
+    "StatusEffectHandler"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "DetectiveVisionAbility",
+    "DisableCape"
+  ]
+}

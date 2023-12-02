@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:ben_affleck/ben_affleck_cowl",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:ben_affleck_chestplate"
+        },
+        "title": {
+            "text": "I'm Rich."
+        },
+        "description": {
+            "text": "Craft Ben Affleck's Chestplate"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_ben_affleck_chestplate": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:ben_affleck_chestplate"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_ben_affleck_chestplate"
+        ]
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:adam_west/adam_west_cowl",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:adam_west_chestplate"
+        },
+        "title": {
+            "text": "To The Batpoles!"
+        },
+        "description": {
+            "text": "Craft Adam West's Chestplate"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_adam_west_chestplate": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:adam_west_chestplate"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_adam_west_chestplate"
+        ]
+    ]
+}

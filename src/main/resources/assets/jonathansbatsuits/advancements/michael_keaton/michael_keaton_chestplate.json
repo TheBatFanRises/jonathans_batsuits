@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:michael_keaton/michael_keaton_cowl",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:michael_keaton_chestplate"
+        },
+        "title": {
+            "text": "You Weigh A Little More Than A Hundred And Eight."
+        },
+        "description": {
+            "text": "Craft Michael Keaton's Chestplate"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_michael_keaton_chestplate": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:michael_keaton_chestplate"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_michael_keaton_chestplate"
+        ]
+    ]
+}

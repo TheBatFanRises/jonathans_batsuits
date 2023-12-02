@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:robert_pattinson/robert_pattinson_leggings",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:robert_pattinson_boots"
+        },
+        "title": {
+            "text": "When That Light Hits The Sky, It's Not Just A Call. It's A Warning."
+        },
+        "description": {
+            "text": "Craft Robert Pattinson's Boots."
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_robert_pattinson_boots": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:robert_pattinson_boots"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_robert_pattinson_boots"
+        ]
+    ]
+}

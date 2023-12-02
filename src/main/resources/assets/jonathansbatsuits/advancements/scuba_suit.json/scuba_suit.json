@@ -1,0 +1,52 @@
+{
+    "parent": "jonathansbatsuits:root",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:scuba_suit_breathing_apparatus"
+        },
+        "title": {
+            "text": "Into The Depths."
+        },
+        "description": {
+            "text": "Craft The Scuba Suit."
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_scuba_suit": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:scuba_suit_breathing_apparatus"
+                        ]
+                    },
+                    {
+                        "items": [
+                            "jonathansbatsuits:scuba_suit_wetsuit"
+                        ]
+                    },
+                    {
+                        "items": [
+                            "jonathansbatsuits:scuba_suit_leggings"
+                        ]
+                    },
+                    {
+                        "items": [
+                            "jonathansbatsuits:scuba_suit_flippers"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_scuba_suit"
+        ]
+    ]
+}

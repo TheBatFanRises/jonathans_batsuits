@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:root",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:ben_affleck_cowl"
+        },
+        "title": {
+            "text": "Tell Me. Do You Bleed? You Will."
+        },
+        "description": {
+            "text": "Craft Ben Affleck's Cowl"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_ben_affleck_cowl": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:ben_affleck_cowl"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_ben_affleck_cowl"
+        ]
+    ]
+}

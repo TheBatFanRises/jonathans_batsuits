@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:robert_pattinson/robert_pattinson_cowl",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:robert_pattinson_cape"
+        },
+        "title": {
+            "text": "What I'm Doing Is My Family's Legacy."
+        },
+        "description": {
+            "text": "Craft Robert Pattinson's Chestplate."
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_robert_pattinson_chestplate": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:robert_pattinson_cape"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_robert_pattinson_chestplate"
+        ]
+    ]
+}

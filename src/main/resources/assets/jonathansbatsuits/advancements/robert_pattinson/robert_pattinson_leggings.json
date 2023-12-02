@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:robert_pattinson/robert_pattinson_cape",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:robert_pattinson_leggings"
+        },
+        "title": {
+            "text": "Fear Is A Tool."
+        },
+        "description": {
+            "text": "Craft Robert Pattinson's Leggings."
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_robert_pattinson_leggings": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:robert_pattinson_leggings"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_robert_pattinson_leggings"
+        ]
+    ]
+}

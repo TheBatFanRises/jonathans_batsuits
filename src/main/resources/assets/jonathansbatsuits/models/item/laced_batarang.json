@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "jonathansbatsuits:item/laced_batarang_overlay",
+    "layer1": "jonathansbatsuits:item/laced_batarang_base"
+  }
+}

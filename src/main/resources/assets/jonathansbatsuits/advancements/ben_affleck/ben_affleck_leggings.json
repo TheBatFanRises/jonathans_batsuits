@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:ben_affleck/ben_affleck_chestplate",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:ben_affleck_leggings"
+        },
+        "title": {
+            "text": "I've Been Dead Inside A Long Time, But Even I Have A Limit."
+        },
+        "description": {
+            "text": "Craft Ben Affleck's Leggings"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_ben_affleck_leggings": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:ben_affleck_leggings"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_ben_affleck_leggings"
+        ]
+    ]
+}

@@ -1,0 +1,19 @@
+{
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:adam_west_cowl"
+        },
+        "title": {
+            "text": "Jonathan's Batsuits",
+            "color": "blue"
+        },
+        "description": {
+            "text": "Become vengeance. Become the night. Become Batman."
+        },
+        "frame": "goal",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false,
+        "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+    }
+}

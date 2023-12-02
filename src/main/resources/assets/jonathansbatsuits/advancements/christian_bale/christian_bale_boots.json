@@ -1,0 +1,37 @@
+{
+    "parent": "jonathansbatsuits:christian_bale/christian_bale_leggings",
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:christian_bale_boots"
+        },
+        "title": {
+            "text": "It's Not Who I Am Underneath, But What I Do That Defines Me."
+        },
+        "description": {
+            "text": "Craft Christian Bale's Boots."
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "obtain_christian_bale_boots": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:christian_bale_boots"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+        "obtain_christian_bale_boots"
+        ]
+    ]
+}
