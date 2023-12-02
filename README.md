@@ -65,6 +65,6 @@ Offering elytra flight and overpowered status effects! Be careful though. Don't 
 
 
 #### I do not own Batman, the character, or anything related to him. This was a fan project.
-#### Batman created by Bob Cane with Bill Finger
+#### Batman created by Bob Kane with Bill Finger
 #### Batman and all related characters remain property of Warner Bros. Entertainment and DC Comics.
 
