@@ -22,6 +22,7 @@ public class BatDartEntity extends ThrownItemEntity {
         super((EntityType<? extends BatDartEntity>)entityType, world);
     }
     /**
+    Save for future development
     public BatDartEntity(World world, LivingEntity livingEntity) {
         super((EntityType<? extends BatDartEntity>)EntityRegister.BAT_DART_ENTITY, livingEntity, world);
     }
