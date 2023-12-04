@@ -25,7 +25,7 @@ public class ModPackets {
             
             //Because C2ME doesn't like the EntityType.spawn method, the ServerWorld.spawnEntity method needs to be called for sake of compatibility.
             if (ChristianBaleItem.isWearingAll(player)) {
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i <= 10; i++) {
                     BatEntity batEntity = new BatEntity(EntityType.BAT, serverWorld);
                     serverWorld.spawnEntity(batEntity);
                     batEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, -1));
