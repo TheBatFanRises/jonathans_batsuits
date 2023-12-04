@@ -19,7 +19,7 @@ public class ModPackets {
     public static final Identifier SUIT_ABILITY_ID = new Identifier(JonathansBatsuits.MOD_ID, "suit_ability");
     public static final Identifier BATMAN_BEYOND_JETS = new Identifier(JonathansBatsuits.MOD_ID, "batman_beyond_jets");
     public static void registerC2SPackets() {
-        ServerPlayNetworking.registerGlobalReceiver(SUIT_ABILITY_ID, ((server, player, handler, buf, responseSender) -> {
+        ServerPlayNetworking.registerGlobalReceiver(SUIT_ABILITY_ID, (server, player, handler, buf, responseSender) -> {
 
             ServerWorld serverWorld = (ServerWorld) player.getEntityWorld();
             
@@ -37,7 +37,7 @@ public class ModPackets {
                 player.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 200,0, false, false,
                         false));
             }
-        }));
+        });
 
         ServerPlayNetworking.registerGlobalReceiver(BATMAN_BEYOND_JETS, (server, player, handler, buf, responseSender) -> {
 
