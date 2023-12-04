@@ -21,6 +21,8 @@ public class ModPackets {
     public static void registerC2SPackets() {
         ServerPlayNetworking.registerGlobalReceiver(SUIT_ABILITY_ID, ((server, player, handler, buf, responseSender) -> {
 
+            ServerWorld serverWorld = (ServerWorld) player.getEntityWorld();
+            
             //Because C2ME doesn't like the EntityType.spawn method, the ServerWorld.spawnEntity method needs to be called for sake of compatibility.
             if (ChristianBaleItem.isWearingAll(player)) {
                 for (int i = 0; i < 10; i++) {
