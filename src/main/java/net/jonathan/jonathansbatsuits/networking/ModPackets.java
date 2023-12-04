@@ -34,7 +34,7 @@ public class ModPackets {
             }
 
             if (BatmanBeyondItem.isWearingAll(player)) {
-                player.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 200,0, false, false,
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 200, 0, false, false,
                         false));
             }
         });
