@@ -1,4 +1,4 @@
-﻿# Jonathans Batsuits V 0.2.0-1.20.1
+﻿# Jonathans Batsuits V 0.2.2-1.20.1
 ### Become vengeance. Become the night. Become Batman
 
 Featuring the suits from the live-action TV series and movies!
