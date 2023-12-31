@@ -26,11 +26,20 @@ public class RocketItemMixin {
         ItemStack itemStack = (ElytraTrinketHandler.slotProvider == null) ? user.getEquippedStack(EquipmentSlot.CHEST) :
                 ElytraTrinketHandler.slotProvider.getElytra(user, user::getEquippedStack);
 
+        /**
+            The SlotProvider.getElytra method will return null if the FireworkRocketItem.use method is called and there is nothing in the cape slot, thus crashing the game.
+            The way the itemStack variable is instantiated above allows the second if statement to properly check to see if the itemStack is null. That way, instead of crashing
+            the game, it can proceed as normal.
+        */
+        
         if (itemStack != null && user.isFallFlying() && itemStack.getItem() instanceof ModElytraItem) {
             cir.setReturnValue(TypedActionResult.pass(user.getStackInHand(hand)));
         }
 
+        //The following code is mostly copy-pasted from the FireworkRocketItem.use method. I'm basically 'spelling it out' for Minecraft.
+        
         if (itemStack == null && user.isFallFlying()) {
+            FireworkRocketItem firework = FireworkRocketItem.class.cast(this);
             ItemStack itemStack1 = user.getStackInHand(hand);
             if (!world.isClient) {
                 FireworkRocketEntity fireworkRocketEntity = new FireworkRocketEntity(world, itemStack1, user);
@@ -38,7 +47,7 @@ public class RocketItemMixin {
                 if (!user.getAbilities().creativeMode) {
                     itemStack1.decrement(1);
                 }
-                user.incrementStat(Stats.USED.getOrCreateStat(itemStack1.getItem()));
+                user.incrementStat(Stats.USED.getOrCreateStat(firework));
             }
             cir.setReturnValue(TypedActionResult.success(user.getStackInHand(hand), world.isClient()));
         }
