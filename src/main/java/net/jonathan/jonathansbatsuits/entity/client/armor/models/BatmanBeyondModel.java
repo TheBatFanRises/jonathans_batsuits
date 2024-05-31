@@ -8,16 +8,16 @@ import software.bernie.geckolib.model.GeoModel;
 public class BatmanBeyondModel extends GeoModel<BatmanBeyondItem> {
     @Override
     public Identifier getModelResource(BatmanBeyondItem object) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "geo/batman_beyond.geo.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "geo/batman_beyond_2.geo.json");
     }
 
     @Override
     public Identifier getTextureResource(BatmanBeyondItem object) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "textures/models/armor/batman_beyond_texture.png");
+        return new Identifier(JonathansBatsuits.MOD_ID, "textures/models/armor/batman_beyond_texture_2.png");
     }
 
     @Override
     public Identifier getAnimationResource(BatmanBeyondItem animatable) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "animations/armor_animation.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "animations/batman_beyond_2.animation.json");
     }
 }

@@ -16,7 +16,6 @@ public class BatDartItem extends Item {
     public BatDartItem(Settings settings) {
         super(settings);
     }
-    /**
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
@@ -36,5 +35,4 @@ public class BatDartItem extends Item {
         }
         return TypedActionResult.success(itemStack, world.isClient());
     }
-    */
 }

@@ -28,11 +28,6 @@ public abstract class DetectiveVisionAbility {
     @Shadow @Nullable public ClientPlayerEntity player;
     @Shadow @Nullable public ClientWorld world;
 
-    @Unique
-    private static boolean isDetectiveVisionLenses(ItemStack stack) {
-        return stack.getItem() == ModItems.DETECTIVE_VISION_LENSES;
-    }
-
     @Inject(at = @At("HEAD"), method = "hasOutline", cancellable = true)
     protected void detectEntities(Entity entity, CallbackInfoReturnable<Boolean> cir) {
 

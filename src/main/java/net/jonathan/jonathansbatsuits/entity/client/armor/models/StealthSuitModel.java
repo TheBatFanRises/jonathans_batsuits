@@ -18,6 +18,6 @@ public class StealthSuitModel extends GeoModel<StealthSuitItem> {
 
     @Override
     public Identifier getAnimationResource(StealthSuitItem animatable) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "animations/armor_animation.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "animations/batsuit.animation.json");
     }
 }

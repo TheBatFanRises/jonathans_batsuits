@@ -2,6 +2,7 @@ package net.jonathan.jonathansbatsuits.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.jonathan.jonathansbatsuits.JonathansBatsuits;
+import net.jonathan.jonathansbatsuits.block.ModBlocks;
 import net.jonathan.jonathansbatsuits.item.custom.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
@@ -56,14 +57,15 @@ public class ModItems {
     //Robert Pattinson
     public static final Item ROBERT_PATTINSON_COWL = registerItem("robert_pattinson_cowl",
             new RobertPattinsonItem(ArmorItem.Type.HELMET, new FabricItemSettings()));
-    public static final Item ROBERT_PATTINSON_CAPE = registerItem("robert_pattinson_cape",
+    public static final Item ROBERT_PATTINSON_CHESTPLATE = registerItem("robert_pattinson_chestplate",
             new RobertPattinsonItem(ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
     public static final Item ROBERT_PATTINSON_LEGGINGS = registerItem("robert_pattinson_leggings",
             new RobertPattinsonItem(ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
     public static final Item ROBERT_PATTINSON_BOOTS = registerItem("robert_pattinson_boots",
             new RobertPattinsonItem(ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
-    //My Custom Batsuit
+    //My Custom Batsuits
+    //Jonathan's Batsuit
     public static final Item JONATHANS_BATSUIT_COWL = registerItem("jonathans_batsuit_cowl",
             new JonathansBatsuitItem(ArmorItem.Type.HELMET, new FabricItemSettings()));
     public static final Item JONATHANS_BATSUIT_CHESTPLATE = registerItem("jonathans_batsuit_chestplate",
@@ -72,6 +74,16 @@ public class ModItems {
             new JonathansBatsuitItem(ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
     public static final Item JONATHANS_BATSUIT_BOOTS = registerItem("jonathans_batsuit_boots",
             new JonathansBatsuitItem(ArmorItem.Type.BOOTS, new FabricItemSettings()));
+
+    //The Batman Who Weeps
+    public static final Item THE_BATMAN_WHO_WEEPS_MASK = registerItem("the_batman_who_weeps_mask",
+            new TheBatmanWhoWeepsItem(ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item THE_BATMAN_WHO_WEEPS_CHESTPLATE = registerItem("the_batman_who_weeps_chestplate",
+            new TheBatmanWhoWeepsItem(ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item THE_BATMAN_WHO_WEEPS_LEGGINGS = registerItem("the_batman_who_weeps_leggings",
+            new TheBatmanWhoWeepsItem(ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item THE_BATMAN_WHO_WEEPS_BOOTS = registerItem("the_batman_who_weeps_boots",
+            new TheBatmanWhoWeepsItem(ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
     //Situational Batsuits
     //Arctic Suit
@@ -193,8 +205,9 @@ public class ModItems {
 
     //Gadgets
     //Batarang
-    public static final Item BATARANG = registerItem("batarang", new BatarangItem(new FabricItemSettings().maxCount(1)));
+    public static final Item BATARANG = registerItem("batarang", new BatarangItem(new FabricItemSettings().maxCount(16)));
     public static final Item LACED_BATARANG = registerItem("laced_batarang", new LacedBatarangItem(new FabricItemSettings().maxCount(16)));
+    public static final Item EXPLOSIVE_BATARANG = registerItem("explosive_batarang", new ExplosiveBatarangItem(new FabricItemSettings().maxCount(16)));
 
     //Bat-Dart
     public static final Item BAT_DART = registerItem("bat_dart", new BatDartItem(new FabricItemSettings().maxCount(16)));
@@ -203,20 +216,30 @@ public class ModItems {
     public static final Item SMOKE_PELLET = registerItem("smoke_pellet", new SmokePelletItem(new FabricItemSettings().maxCount(16)));
 
     //Bat-Glider
-    public static final Item BAT_GLIDER = registerItem("bat_glider",
-            new BatGliderItem(ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item BAT_GLIDER = registerItem("bat_glider", new BatGliderItem(ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
 
     //Detective Vision Lenses
     public static final Item DETECTIVE_VISION_LENSES = registerItem("detective_vision_lenses", new DetectiveVisionItem(new FabricItemSettings()));
 
-    //VisionSteps Primordial Energy
+    //Grapple Gun
+    public static final Item GRAPPLE_GUN = registerItem("grapple_gun", new GrappleGunItem(new FabricItemSettings()));
+
+    //VisionSteps Items
     public static final Item PRIMORDIAL_ENERGY = registerItem("primordial_energy", new Item(new FabricItemSettings()));
+    public static final Item TEMPORAL_ESSENCE = registerItem("temporal_essence", new Item(new FabricItemSettings()));
+    public static final Item RESONANCE_ENGINE = registerItem("resonance_engine",
+            new ResonanceEngineBlockItem(ModBlocks.RESONANCE_ENGINE, new FabricItemSettings()));
+
+
+    //Crafting Materials
+    public static final Item TECH_PART = registerItem("tech_part", new Item(new FabricItemSettings()));
+    public static final Item HIGH_TECH_PART = registerItem("high_tech_part", new Item(new FabricItemSettings()));
 
     public static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(JonathansBatsuits.MOD_ID, name), item);
     }
 
     public static void registerModItems() {
-        JonathansBatsuits.LOGGER.debug("Registering Mod Items for " + JonathansBatsuits.MOD_ID);
+        JonathansBatsuits.LOGGER.info("Atomic batteries to power! (Registering " + JonathansBatsuits.MOD_ID + " items)");
     }
 }

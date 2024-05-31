@@ -4,6 +4,7 @@ import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
+import net.jonathan.jonathansbatsuits.JonathansBatsuits;
 import net.jonathan.jonathansbatsuits.event.custom_events.ModElytraItem;
 import net.jonathan.jonathansbatsuits.item.custom.*;
 import net.minecraft.entity.EquipmentSlot;
@@ -27,6 +28,10 @@ public class ElytraTrinketHandler {
     }
 
     public static void register() {
+
+        JonathansBatsuits.LOGGER.info("You were there at the beginning... and now... you get to see how it ends.");
+        JonathansBatsuits.LOGGER.info("(Registering " + JonathansBatsuits.MOD_ID + " trinket handler)");
+
         slotProvider = (entity, slotGetter) -> {
             ItemStack itemStack = (ItemStack)slotGetter.apply(EquipmentSlot.CHEST);
             if (isElytra(itemStack)) {
@@ -67,7 +72,10 @@ public class ElytraTrinketHandler {
             for (Pair<SlotReference, ItemStack> slot : equipped) {
                 ItemStack stack = (ItemStack) slot.getRight();
                 Item item = stack.getItem();
-                if (item instanceof ModElytraItem modElytraItem && AdamWestItem.isWearingAll(entity)) {
+                if (item instanceof ModElytraItem modElytraItem && (AdamWestItem.isWearingAll(entity) || MichaelKeatonItem.isWearingAll(entity) ||
+                        ChristianBaleItem.isWearingAll(entity) || BenAffleckItem.isWearingAll(entity) || RobertPattinsonItem.isWearingAll(entity) ||
+                        JonathansBatsuitItem.isWearingAll(entity) || TasItem.isWearingAll(entity) || TnbaItem.isWearingAll(entity) ||
+                        ArkhamAsylumItem.isWearingAll(entity))) {
                     if (modElytraItem.useCustomElytra(entity, stack, tickElytra)) {
                         return true;
                     }
@@ -89,6 +97,6 @@ public class ElytraTrinketHandler {
 
     @FunctionalInterface
     public interface SlotProvider {
-        ItemStack getElyra(LivingEntity entity, Function<EquipmentSlot, ItemStack> vari2);
+        ItemStack getElytra(LivingEntity entity, Function<EquipmentSlot, ItemStack> vari2);
     }
 }

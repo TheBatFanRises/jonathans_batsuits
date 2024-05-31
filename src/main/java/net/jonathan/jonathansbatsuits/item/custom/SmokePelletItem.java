@@ -12,7 +12,9 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class SmokePelletItem extends Item {
-    public SmokePelletItem(Settings settings) {super(settings);}
+    public SmokePelletItem(Settings settings) {
+        super(settings);
+    }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {

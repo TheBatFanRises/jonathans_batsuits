@@ -17,15 +17,10 @@ public class DisableCape {
     @Inject(at = @At("HEAD"), method = "canRenderCapeTexture", cancellable = true)
     protected void disableCapeRenderer(CallbackInfoReturnable<Boolean> cir) {
         AbstractClientPlayerEntity player = AbstractClientPlayerEntity.class.cast(this);
-        ItemStack stack;
-        if (ElytraTrinketHandler.slotProvider == null) {
-            stack = player.getEquippedStack(EquipmentSlot.CHEST);
-        } else {
-            ElytraTrinketHandler.SlotProvider slotProvider = ElytraTrinketHandler.slotProvider;
-            Objects.requireNonNull(player);
-            stack = slotProvider.getElyra(player, player::getEquippedStack);
-        }
-        ItemStack itemStack = stack;
+
+        ItemStack itemStack = (ElytraTrinketHandler.slotProvider == null) ? player.getEquippedStack(EquipmentSlot.CHEST) :
+                ElytraTrinketHandler.slotProvider.getElytra(player, player::getEquippedStack);
+
         if (itemStack != null && itemStack.getItem() == ModItems.BAT_GLIDER)  {
             cir.setReturnValue(false);
         }

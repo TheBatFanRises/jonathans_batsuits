@@ -2,6 +2,7 @@ package net.jonathan.jonathansbatsuits;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.jonathan.jonathansbatsuits.block.ModBlocks;
 import net.jonathan.jonathansbatsuits.effect.ModEffects;
 import net.jonathan.jonathansbatsuits.entity.client.EntityRegister;
 import net.jonathan.jonathansbatsuits.event.ScubaSuitEvent;
@@ -19,7 +20,7 @@ public class JonathansBatsuits implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("To the Bat-Poles!");
 
 		ModItems.registerModItems();
 
@@ -34,6 +35,8 @@ public class JonathansBatsuits implements ModInitializer {
 		ElytraTrinketHandler.register();
 
 		ModEffects.registerEffects();
+
+		ModBlocks.registerModBlocks();
 
 		ServerTickEvents.START_SERVER_TICK.register(new ScubaSuitEvent());
 	}

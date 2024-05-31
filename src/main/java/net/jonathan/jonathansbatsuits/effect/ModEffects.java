@@ -10,6 +10,9 @@ import net.minecraft.util.Identifier;
 public class ModEffects {
     public static StatusEffect LIFE_FORCE_DRAIN;
     public static void registerEffects() {
+
+        JonathansBatsuits.LOGGER.info("Thank you Kevin. (Registering " + JonathansBatsuits.MOD_ID + " status effects)");
+
         LIFE_FORCE_DRAIN = Registry.register(Registries.STATUS_EFFECT, new Identifier(JonathansBatsuits.MOD_ID, "life_force_drain"),
                 new LifeForceDrainEffect(StatusEffectCategory.HARMFUL, 0xff1700));
     }

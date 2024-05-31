@@ -1,0 +1,33 @@
+{
+    "display": {
+        "icon": {
+            "item": "jonathansbatsuits:adam_west_cowl"
+        },
+        "title": "The Bat-Phone, Sir.",
+        "description": "Craft Adam West's Cowl",
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "parent": "jonathansbatsuits:root",
+    "criteria": {
+        "obtain_adam_west_cowl": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "items": [
+                            "jonathansbatsuits:adam_west_cowl"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "obtain_adam_west_cowl"
+        ]
+    ]
+}

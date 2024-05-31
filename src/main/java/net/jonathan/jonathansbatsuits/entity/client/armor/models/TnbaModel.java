@@ -8,16 +8,16 @@ import software.bernie.geckolib.model.GeoModel;
 public class TnbaModel extends GeoModel<TnbaItem> {
     @Override
     public Identifier getModelResource(TnbaItem object) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "geo/tas.geo.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "geo/tas_2.geo.json");
     }
 
     @Override
     public Identifier getTextureResource(TnbaItem object) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "textures/models/armor/tnba_texture.png");
+        return new Identifier(JonathansBatsuits.MOD_ID, "textures/models/armor/tnba_texture_2.png");
     }
 
     @Override
     public Identifier getAnimationResource(TnbaItem animatable) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "animations/armor_animation.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "animations/tas_2.animation.json");
     }
 }

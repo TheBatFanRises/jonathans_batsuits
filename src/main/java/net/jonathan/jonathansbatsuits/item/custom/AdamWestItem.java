@@ -108,12 +108,13 @@ public class AdamWestItem extends ArmorItem implements GeoItem {
             Entity entity = state.getData(DataTickets.ENTITY);
 
             if (entity instanceof LivingEntity livingEntity) {
-                ElytraTrinketHandler.SlotProvider slotProvider = ElytraTrinketHandler.slotProvider;
-                Objects.requireNonNull(livingEntity);
-                ItemStack stack = slotProvider.getElyra(livingEntity, livingEntity::getEquippedStack);
+                ItemStack stack = (ElytraTrinketHandler.slotProvider == null) ? livingEntity.getEquippedStack(EquipmentSlot.CHEST) :
+                        ElytraTrinketHandler.slotProvider.getElytra(livingEntity, livingEntity::getEquippedStack);
 
-                if (isWearingAll(livingEntity) && livingEntity.isFallFlying() && stack.getItem() == ModItems.BAT_GLIDER) {
+                if (stack != null && isWearingAll(livingEntity) && livingEntity.isFallFlying() && stack.getItem() == ModItems.BAT_GLIDER) {
                     return PlayState.CONTINUE;
+                } else {
+                    return PlayState.STOP;
                 }
             }
             return PlayState.STOP;

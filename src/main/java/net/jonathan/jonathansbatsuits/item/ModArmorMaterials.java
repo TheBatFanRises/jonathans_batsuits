@@ -2,7 +2,6 @@ package net.jonathan.jonathansbatsuits.item;
 
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
@@ -12,7 +11,10 @@ import net.minecraft.util.Lazy;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    ADAM_WEST("adam_west", 15, new int[]{2, 5, 6, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
+
+    //For Reference: {Feet, Legs, Chest, Head}
+
+    ADAM_WEST("adam_west", 15, new int[]{1, 2, 3, 1}, 12, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
             0.0F, 0.0F, () -> {
         return Ingredient.ofItems(Items.LIGHT_GRAY_WOOL, Items.BLUE_WOOL);
     }),
@@ -20,12 +22,12 @@ public enum ModArmorMaterials implements ArmorMaterial {
             0.0F, 0.0F, () -> {
         return Ingredient.ofItems(Items.BLACK_WOOL);
     }),
-    CHRISTIAN_BALE("christian_bale", 33, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,
-            2.0F, 0.0F, () -> {
+    CHRISTIAN_BALE("christian_bale", 15, new int[]{2, 5, 6, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN,
+            0.0F, 0.0F, () -> {
         return Ingredient.ofItems(Items.GRAY_WOOL);
     }),
-    BEN_AFFLECK("ben_affleck", 33, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-            2.0F, 0.0F, () -> {
+    BEN_AFFLECK("ben_affleck", 25, new int[]{3, 7, 8, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
+            1.0F, 0.0F, () -> {
         return Ingredient.ofItems(Items.GRAY_WOOL);
     }),
     ROBERT_PATTINSON("robert_pattinson", 37, new int[]{3, 6, 8, 3}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON,
@@ -35,6 +37,10 @@ public enum ModArmorMaterials implements ArmorMaterial {
     JONATHANS_BATSUIT("jonathans_batsuit", 25, new int[]{2, 6, 7, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
             0.0F, 0.0F, () -> {
         return Ingredient.ofItems(Items.GRAY_WOOL, Items.BLUE_WOOL);
+    }),
+    THE_BATMAN_WHO_WEEPS("the_batman_who_weeps", 25, new int[]{2, 7, 8, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F, 0.0F, () -> {
+        return Ingredient.ofItems(Items.IRON_INGOT);
     }),
     ARCTIC_SUIT("arctic_suit", 15, new int[]{1, 4, 5, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
             0.0F, 0.0F, () -> {
@@ -76,7 +82,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
             10.0F, 2.0F, () -> {
         return Ingredient.ofItems(Items.IRON_INGOT);
     }),
-    BAT_GLIDER("bat_glider", 15, new int[]{1, 4, 5, 2}, 12, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
+    BAT_GLIDER("bat_glider", 33, new int[]{1, 7, 1, 1}, 12, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
             0.0F, 0.0F, () -> {
         return Ingredient.ofItems(Items.BLUE_WOOL);
     });

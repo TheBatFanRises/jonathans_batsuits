@@ -16,14 +16,36 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
+import software.bernie.geckolib.core.animatable.GeoAnimatable;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class BatDartEntity extends ThrownItemEntity {
-    public BatDartEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
+public class BatDartEntity extends ThrownItemEntity implements GeoAnimatable {
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+    public BatDartEntity(EntityType<? extends BatDartEntity> entityType, World world) {
         super((EntityType<? extends BatDartEntity>)entityType, world);
     }
-    /**
     public BatDartEntity(World world, LivingEntity livingEntity) {
         super((EntityType<? extends BatDartEntity>)EntityRegister.BAT_DART_ENTITY, livingEntity, world);
+    }
+
+    private <E extends GeoAnimatable> PlayState predicate(AnimationState<E> state) {
+        state.getController().setAnimation(RawAnimation.begin().thenLoop("spinning"));
+        if (!this.isAlive()) {
+            return PlayState.CONTINUE;
+        } else {
+            return PlayState.STOP;
+        }
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        controllerRegistrar.add(new AnimationController<>(this, 0, this::predicate));
     }
 
     @Override
@@ -40,7 +62,7 @@ public class BatDartEntity extends ThrownItemEntity {
 
                 Entity entity2 = this.getOwner();
                 SoundEvent soundEvent = SoundEvents.ITEM_TRIDENT_HIT;
-                if (entity.damage(entity.getDamageSources().create(ModDamageTypes.BATARANG, entity2), f)) {
+                if (entity.damage(entity.getDamageSources().trident(this, entity2), f)) {
                     if (entity.getType() == EntityType.ENDERMAN) {
                         return;
                     }
@@ -56,12 +78,22 @@ public class BatDartEntity extends ThrownItemEntity {
             }
         }
     }
-     */
     @Override
     protected Item getDefaultItem() {
         return ModItems.BAT_DART;
     }
+
     protected ItemStack asItemStack() {
         return new ItemStack(ModItems.BAT_DART);
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
+
+    @Override
+    public double getTick(Object o) {
+        return 0;
     }
 }

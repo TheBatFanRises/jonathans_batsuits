@@ -4,6 +4,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.jonathan.jonathansbatsuits.entity.client.armor.renderers.BatGliderRenderer;
 import net.jonathan.jonathansbatsuits.entity.client.armor.renderers.JonathansBatsuitRenderer;
+import net.jonathan.jonathansbatsuits.integration.trinkets.ElytraTrinketHandler;
 import net.jonathan.jonathansbatsuits.item.ModArmorMaterials;
 import net.jonathan.jonathansbatsuits.item.ModItems;
 import net.minecraft.client.item.TooltipContext;
@@ -32,6 +33,7 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Supplier;

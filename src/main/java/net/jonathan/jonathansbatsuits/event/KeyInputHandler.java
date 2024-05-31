@@ -7,16 +7,30 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.jonathan.jonathansbatsuits.networking.ModPackets;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.client.util.ParticleUtil;
 import org.lwjgl.glfw.GLFW;
 
 public class KeyInputHandler {
-    public static final String KEY_CATEGORY_BATSUITS = "key.category.jonathansbatsuits.batsuits";
-    public static final String KEY_BATSUIT_ABILITY = "key.jonathansbatsuits.batsuit_ability";
-    public static final String KEY_DETECTIVE_VISION = "key.jonathansbatsuits.detective_vision";
-    public static final String KEY_BATMAN_BEYOND_JETS = "key.jonathansbatsuits.batman_beyond_jets";
-    public static KeyBinding abilityKey;
-    public static KeyBinding dvKey;
-    public static KeyBinding bbKey;
+    public static KeyBinding abilityKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.jonathansbatsuits.batsuit_ability",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_I,
+            "key.category.jonathansbatsuits.batsuits"));
+    public static KeyBinding dvKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.jonathansbatsuits.detective_vision",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_P,
+            "key.category.jonathansbatsuits.batsuits"));
+    public static KeyBinding bbKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.jonathansbatsuits.batman_beyond_jets",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_O,
+            "key.category.jonathansbatsuits.batsuits"));
+    public static KeyBinding hookDetachKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.jonathansbatsuits.hook_detach_key",
+            InputUtil.Type.KEYSYM,
+            GLFW.GLFW_KEY_G,
+            "key.category.jonathansbatsuits.batsuits"));
     public static boolean DVtoggle;
     public static float abilityTick = 0;
     public static float bbTick = 0;
@@ -39,26 +53,5 @@ public class KeyInputHandler {
                 ClientPlayNetworking.send(ModPackets.BATMAN_BEYOND_JETS, PacketByteBufs.create());
             }
         });
-    }
-    public static void register() {
-        abilityKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                KEY_BATSUIT_ABILITY,
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_I,
-                KEY_CATEGORY_BATSUITS
-        ));
-        dvKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                KEY_DETECTIVE_VISION,
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_P,
-                KEY_CATEGORY_BATSUITS
-        ));
-        bbKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                KEY_BATMAN_BEYOND_JETS,
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_O,
-                KEY_CATEGORY_BATSUITS
-        ));
-        registerKeyInputs();
     }
 }

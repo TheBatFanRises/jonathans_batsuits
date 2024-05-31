@@ -13,11 +13,11 @@ public class RobertPattinsonModel extends GeoModel<RobertPattinsonItem> {
 
     @Override
     public Identifier getTextureResource(RobertPattinsonItem object) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "textures/models/armor/robert_pattinson_texture_2.png");
+        return new Identifier(JonathansBatsuits.MOD_ID, "textures/models/armor/robert_pattinson_texture_2_upscaled.png");
     }
 
     @Override
     public Identifier getAnimationResource(RobertPattinsonItem animatable) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "animations/armor_animation.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "animations/batsuit.animation.json");
     }
 }

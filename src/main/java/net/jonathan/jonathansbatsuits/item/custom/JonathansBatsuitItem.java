@@ -3,8 +3,10 @@ package net.jonathan.jonathansbatsuits.item.custom;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.jonathan.jonathansbatsuits.entity.client.armor.renderers.JonathansBatsuitRenderer;
+import net.jonathan.jonathansbatsuits.integration.trinkets.ElytraTrinketHandler;
 import net.jonathan.jonathansbatsuits.item.ModArmorMaterials;
 import net.jonathan.jonathansbatsuits.item.ModItems;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -15,6 +17,10 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.client.RenderProvider;
 import software.bernie.geckolib.constant.DataTickets;
@@ -27,6 +33,8 @@ import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -95,6 +103,22 @@ public class JonathansBatsuitItem extends ArmorItem implements GeoItem {
                     ModItems.JONATHANS_BATSUIT_COWL));
             return isFullSet ? PlayState.CONTINUE : PlayState.STOP;
         }));
+        controllers.add(new AnimationController<>(this, 0, state -> {
+            state.getController().setAnimation(RawAnimation.begin().then("cape_spread", Animation.LoopType.HOLD_ON_LAST_FRAME));
+            Entity entity = state.getData(DataTickets.ENTITY);
+
+            if (entity instanceof LivingEntity livingEntity) {
+                ItemStack stack = (ElytraTrinketHandler.slotProvider == null) ? livingEntity.getEquippedStack(EquipmentSlot.CHEST) :
+                        ElytraTrinketHandler.slotProvider.getElytra(livingEntity, livingEntity::getEquippedStack);
+
+                if (stack != null && isWearingAll(livingEntity) && livingEntity.isFallFlying() && stack.getItem() == ModItems.BAT_GLIDER) {
+                    return PlayState.CONTINUE;
+                } else {
+                    return PlayState.STOP;
+                }
+            }
+            return PlayState.STOP;
+        }));
     }
 
     @Override
@@ -117,5 +141,9 @@ public class JonathansBatsuitItem extends ArmorItem implements GeoItem {
     @Override
     public Supplier<Object> getRenderProvider() {
         return this.renderProvider;
+    }
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.literal("Compatible with the Bat-Glider.").formatted(Formatting.GRAY));
     }
 }

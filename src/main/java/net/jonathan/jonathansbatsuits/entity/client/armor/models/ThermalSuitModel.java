@@ -18,6 +18,6 @@ public class ThermalSuitModel extends GeoModel<ThermalSuitItem> {
 
     @Override
     public Identifier getAnimationResource(ThermalSuitItem animatable) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "animations/armor_animation.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "animations/batsuit.animation.json");
     }
 }

@@ -21,7 +21,7 @@ public class BatarangRenderer extends GeoEntityRenderer<BatarangEntity> {
     @Override
     public void preRender(MatrixStack poseStack, BatarangEntity entity, BakedGeoModel model, VertexConsumerProvider bufferSource, VertexConsumer buffer,
                           boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        poseStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.getYaw() - 90.0F));
+        poseStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.getYaw() - 90));
         poseStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(entity.getPitch()));
     }
 }

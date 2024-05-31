@@ -28,7 +28,7 @@ public class ElytraInitializer {
 
                 registrationHelper.register(new BlueCapeRenderFeature<>(entityRenderer, context.getModelLoader()));
 
-                registrationHelper.register(new BatmanBeyondCapeRendererFeature<>(entityRenderer, context.getModelLoader()));
+                //registrationHelper.register(new BatmanBeyondCapeRendererFeature<>(entityRenderer, context.getModelLoader()));
             }
         });
     }

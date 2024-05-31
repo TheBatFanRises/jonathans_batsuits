@@ -2,8 +2,6 @@ package net.jonathan.jonathansbatsuits.entity.client.projectiles;
 
 import com.google.common.collect.Sets;
 import net.jonathan.jonathansbatsuits.entity.client.EntityRegister;
-import net.jonathan.jonathansbatsuits.entity.damage.ModDamageSource;
-import net.jonathan.jonathansbatsuits.entity.damage.ModDamageTypes;
 import net.jonathan.jonathansbatsuits.item.ModItems;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -14,7 +12,6 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
@@ -24,12 +21,10 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.registry.Registries;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
@@ -71,7 +66,7 @@ public class BatarangEntity extends PersistentProjectileEntity implements GeoEnt
     }
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController(this, "controller", 0, this::predicate));
+        controllerRegistrar.add(new AnimationController<>(this, "controller", 0, this::predicate));
     }
     @Override
     protected void onBlockHit(BlockHitResult blockHitResult) {
@@ -260,7 +255,7 @@ public class BatarangEntity extends PersistentProjectileEntity implements GeoEnt
     @Override
     protected ItemStack asItemStack() {
         if (this.effects.isEmpty() && this.potion == Potions.EMPTY) {
-            return this.batarangStack.copy();
+            return new ItemStack(ModItems.BATARANG);
         }
         ItemStack itemStack = new ItemStack(ModItems.LACED_BATARANG);
         PotionUtil.setPotion(itemStack, this.potion);

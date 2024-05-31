@@ -18,6 +18,6 @@ public class BattleArmorV1Model extends GeoModel<BattleArmorV1Item> {
 
     @Override
     public Identifier getAnimationResource(BattleArmorV1Item animatable) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "animations/armor_animation.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "animations/batsuit.animation.json");
     }
 }

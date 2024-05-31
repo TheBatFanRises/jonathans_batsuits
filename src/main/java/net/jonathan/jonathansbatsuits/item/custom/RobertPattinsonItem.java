@@ -3,6 +3,7 @@ package net.jonathan.jonathansbatsuits.item.custom;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.jonathan.jonathansbatsuits.entity.client.armor.renderers.RobertPattinsonRenderer;
+import net.jonathan.jonathansbatsuits.integration.trinkets.ElytraTrinketHandler;
 import net.jonathan.jonathansbatsuits.item.ModArmorMaterials;
 import net.jonathan.jonathansbatsuits.item.ModItems;
 import net.minecraft.client.item.TooltipContext;
@@ -33,6 +34,7 @@ import software.bernie.geckolib.renderer.GeoArmorRenderer;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -97,9 +99,25 @@ public class RobertPattinsonItem extends ArmorItem implements GeoItem {
             boolean isFullSet = wornArmor.containsAll(ObjectArrayList.of(
                     ModItems.ROBERT_PATTINSON_BOOTS,
                     ModItems.ROBERT_PATTINSON_LEGGINGS,
-                    ModItems.ROBERT_PATTINSON_CAPE,
+                    ModItems.ROBERT_PATTINSON_CHESTPLATE,
                     ModItems.ROBERT_PATTINSON_COWL));
             return isFullSet ? PlayState.CONTINUE : PlayState.STOP;
+        }));
+        controllers.add(new AnimationController<>(this, 0, state -> {
+            state.getController().setAnimation(RawAnimation.begin().then("cape_spread", Animation.LoopType.HOLD_ON_LAST_FRAME));
+            Entity entity = state.getData(DataTickets.ENTITY);
+
+            if (entity instanceof LivingEntity livingEntity) {
+                ItemStack stack = (ElytraTrinketHandler.slotProvider == null) ? livingEntity.getEquippedStack(EquipmentSlot.CHEST) :
+                        ElytraTrinketHandler.slotProvider.getElytra(livingEntity, livingEntity::getEquippedStack);
+
+                if (stack != null && isWearingAll(livingEntity) && livingEntity.isFallFlying() && stack.getItem() == ModItems.BAT_GLIDER) {
+                    return PlayState.CONTINUE;
+                } else {
+                    return PlayState.STOP;
+                }
+            }
+            return PlayState.STOP;
         }));
     }
 
@@ -111,7 +129,7 @@ public class RobertPattinsonItem extends ArmorItem implements GeoItem {
     public static Boolean isWearingAll(LivingEntity entity) {
         return entity.getEquippedStack(EquipmentSlot.FEET).isOf(ModItems.ROBERT_PATTINSON_BOOTS) &&
                 entity.getEquippedStack(EquipmentSlot.LEGS).isOf(ModItems.ROBERT_PATTINSON_LEGGINGS) &&
-                entity.getEquippedStack(EquipmentSlot.CHEST).isOf(ModItems.ROBERT_PATTINSON_CAPE) &&
+                entity.getEquippedStack(EquipmentSlot.CHEST).isOf(ModItems.ROBERT_PATTINSON_CHESTPLATE) &&
                 entity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.ROBERT_PATTINSON_COWL);
     }
     public static void applySetEffect(LivingEntity entity) {
@@ -131,5 +149,7 @@ public class RobertPattinsonItem extends ArmorItem implements GeoItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.literal("Suit is immune to Blindness").formatted(Formatting.GRAY));
+        tooltip.add(Text.literal(" "));
+        tooltip.add(Text.literal("Compatible with the Bat-Glider.").formatted(Formatting.GRAY));
     }
 }

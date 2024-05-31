@@ -18,6 +18,6 @@ public class AdamWestModel extends GeoModel<AdamWestItem> {
 
     @Override
     public Identifier getAnimationResource(AdamWestItem animatable) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "animations/adam_west.animation.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "animations/batsuit.animation.json");
     }
 }

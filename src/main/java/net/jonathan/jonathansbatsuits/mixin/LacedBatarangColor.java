@@ -8,13 +8,15 @@ import net.minecraft.item.ItemConvertible;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.util.collection.IdList;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemColors.class)
 public class LacedBatarangColor {
-    private final IdList<ItemColorProvider> providers = new IdList(32);
+    @Unique
+    private final IdList<ItemColorProvider> providers = new IdList<>(32);
     @Inject(at = @At("HEAD"), method = "register")
     protected void registerBatarangColors(ItemColorProvider provider, ItemConvertible[] items, CallbackInfo ci) {
         for (ItemConvertible itemConvertible : items) {

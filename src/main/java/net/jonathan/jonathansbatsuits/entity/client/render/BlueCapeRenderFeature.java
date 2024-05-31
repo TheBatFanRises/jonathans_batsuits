@@ -47,7 +47,7 @@ public class BlueCapeRenderFeature <T extends LivingEntity, M extends EntityMode
         } else {
             ElytraTrinketHandler.SlotProvider slotProvider = ElytraTrinketHandler.slotProvider;
             Objects.requireNonNull(livingEntity);
-            stack = slotProvider.getElyra(livingEntity, livingEntity::getEquippedStack);
+            stack = slotProvider.getElytra(livingEntity, livingEntity::getEquippedStack);
         }
         ItemStack itemStack = stack;
         if (itemStack != null && itemStack.getItem() == ModItems.BLUE_CAPE && itemStack.getItem() instanceof FabricElytraItem) {

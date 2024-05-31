@@ -85,6 +85,14 @@
 					]
 				},
 				{
+					"name": "bone",
+					"parent": "armorBody",
+					"pivot": [0, 21, 2.9],
+					"cubes": [
+						{"origin": [-5, 18, 2.9], "size": [10, 6, 0], "uv": [77, 7]}
+					]
+				},
+				{
 					"name": "bipedRightArm",
 					"pivot": [-5, 22, 0]
 				},

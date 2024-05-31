@@ -25,7 +25,7 @@ public class JonathansBatsuitsClient implements ClientModInitializer {
         EntityClientRegister.registerEntities();
 
         //Keybinds
-        KeyInputHandler.register();
+        KeyInputHandler.registerKeyInputs();
 
         //ModPackets
         ModPackets.registerS2CPackets();

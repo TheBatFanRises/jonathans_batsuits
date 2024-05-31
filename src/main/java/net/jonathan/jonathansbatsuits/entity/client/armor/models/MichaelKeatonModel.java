@@ -19,6 +19,6 @@ public class MichaelKeatonModel extends GeoModel<MichaelKeatonItem> {
 
     @Override
     public Identifier getAnimationResource(MichaelKeatonItem animatable) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "animations/armor_animation.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "animations/batsuit.animation.json");
     }
 }

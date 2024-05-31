@@ -18,6 +18,6 @@ public class ChristianBaleModel extends GeoModel<ChristianBaleItem> {
 
     @Override
     public Identifier getAnimationResource(ChristianBaleItem animatable) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "animations/armor_animation.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "animations/batsuit.animation.json");
     }
 }

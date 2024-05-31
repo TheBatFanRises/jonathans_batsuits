@@ -18,6 +18,6 @@ public class BenAffleckModel extends GeoModel<BenAffleckItem> {
 
     @Override
     public Identifier getAnimationResource(BenAffleckItem animatable) {
-        return new Identifier(JonathansBatsuits.MOD_ID, "animations/armor_animation.json");
+        return new Identifier(JonathansBatsuits.MOD_ID, "animations/batsuit.animation.json");
     }
 }

@@ -1,12 +1,15 @@
 package net.jonathan.jonathansbatsuits.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.jonathan.jonathansbatsuits.JonathansBatsuits;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.*;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
+import net.minecraft.predicate.item.EnchantmentPredicate;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
@@ -35,7 +38,7 @@ public class ModItemGroup {
                     entries.add(ModItems.BEN_AFFLECK_LEGGINGS);
                     entries.add(ModItems.BEN_AFFLECK_BOOTS);
                     entries.add(ModItems.ROBERT_PATTINSON_COWL);
-                    entries.add(ModItems.ROBERT_PATTINSON_CAPE);
+                    entries.add(ModItems.ROBERT_PATTINSON_CHESTPLATE);
                     entries.add(ModItems.ROBERT_PATTINSON_LEGGINGS);
                     entries.add(ModItems.ROBERT_PATTINSON_BOOTS);
                 }).build());
@@ -46,6 +49,10 @@ public class ModItemGroup {
                     entries.add(ModItems.JONATHANS_BATSUIT_CHESTPLATE);
                     entries.add(ModItems.JONATHANS_BATSUIT_LEGGINGS);
                     entries.add(ModItems.JONATHANS_BATSUIT_BOOTS);
+                    entries.add(ModItems.THE_BATMAN_WHO_WEEPS_MASK);
+                    entries.add(ModItems.THE_BATMAN_WHO_WEEPS_CHESTPLATE);
+                    entries.add(ModItems.THE_BATMAN_WHO_WEEPS_LEGGINGS);
+                    entries.add(ModItems.THE_BATMAN_WHO_WEEPS_BOOTS);
                 }).build());
     public static final ItemGroup SITUATIONAL_BATSUITS = Registry.register(Registries.ITEM_GROUP, new Identifier(JonathansBatsuits.MOD_ID,
             "situational_batsuits"), FabricItemGroup.builder().displayName(Text.translatable("itemgroup.situational_batsuits"))
@@ -110,11 +117,22 @@ public class ModItemGroup {
                 entries.add(ModItems.SMOKE_PELLET);
                 entries.add(ModItems.BAT_GLIDER);
                 entries.add(ModItems.DETECTIVE_VISION_LENSES);
+                entries.add(ModItems.BAT_DART);
+                entries.add(ModItems.EXPLOSIVE_BATARANG);
+                entries.add(ModItems.GRAPPLE_GUN);
             }).build());
     public static final ItemGroup VISIONSTEPS_ITEMS = Registry.register(Registries.ITEM_GROUP, new Identifier(JonathansBatsuits.MOD_ID,
             "visionsteps_items"), FabricItemGroup.builder().displayName(Text.translatable("itemgroup.visionsteps_items"))
             .icon(() -> new ItemStack(ModItems.PRIMORDIAL_ENERGY)).entries((displayContext, entries) -> {
                 entries.add(ModItems.PRIMORDIAL_ENERGY);
+                entries.add(ModItems.TEMPORAL_ESSENCE);
+                entries.add(ModItems.RESONANCE_ENGINE);
+            }).build());
+    public static final ItemGroup BATSUIT_CRAFTING_MATERIALS = Registry.register(Registries.ITEM_GROUP, new Identifier(JonathansBatsuits.MOD_ID,
+            "batsuit_crafting_materials"), FabricItemGroup.builder().displayName(Text.translatable("itemgroup.batsuit_crafting_materials"))
+            .icon(() -> new ItemStack(ModItems.TECH_PART)).entries((displayContext, entries) -> {
+                entries.add(ModItems.TECH_PART);
+                entries.add(ModItems.HIGH_TECH_PART);
             }).build());
 
     private static void addPotions(ItemGroup.Entries entries, RegistryWrapper<Potion> registryWrapper, Item item, ItemGroup.StackVisibility visibility) {
@@ -123,6 +141,6 @@ public class ModItemGroup {
     }
 
     public static void registerItemGroups() {
-        JonathansBatsuits.LOGGER.info("Registering Item Groups For " + JonathansBatsuits.MOD_ID);
+        JonathansBatsuits.LOGGER.info("Turbines to speed! (Registering " + JonathansBatsuits.MOD_ID + " item groups)");
     }
 }

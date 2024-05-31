@@ -33,7 +33,9 @@ public class SmokePelletEntity extends ThrownItemEntity {
     }
 
     @Override
-    protected Item getDefaultItem() {return ModItems.SMOKE_PELLET;}
+    protected Item getDefaultItem() {
+        return ModItems.SMOKE_PELLET;
+    }
 
     @Override
     public void tick() {

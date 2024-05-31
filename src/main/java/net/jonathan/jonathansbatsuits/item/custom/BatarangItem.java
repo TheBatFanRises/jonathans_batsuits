@@ -23,7 +23,7 @@ public class BatarangItem extends Item {
         world.playSound(user, user.getBlockPos(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F,
                 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!world.isClient) {
-            BatarangEntity  batarangEntity = new BatarangEntity(world, user, itemStack);
+            BatarangEntity batarangEntity = new BatarangEntity(world, user, itemStack);
             batarangEntity.setOwner(user);
             batarangEntity.initFromStack(itemStack);
             batarangEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 3.0F, 1.0F);
