@@ -1,7 +1,6 @@
 package net.jonathan.jonathansbatsuits.entity.client.block_entity;
 
-import net.jonathan.jonathansbatsuits.block.custom.ResonanceEngineBlock;
-import net.jonathan.jonathansbatsuits.entity.client.BlockEntityRegister;
+import net.jonathan.jonathansbatsuits.entity.client.EntityRegister;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
@@ -18,14 +17,14 @@ public class ResonanceEngineBlockEntity extends BlockEntity implements GeoBlockE
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public ResonanceEngineBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntityRegister.RESONANCE_ENGINE, pos, state);
+        super(EntityRegister.RESONANCE_ENGINE, pos, state);
     }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<>(this, 0, state -> {
             state.getController().setAnimation(RawAnimation.begin().thenLoop("rotation"));
-            if (ResonanceEngineBlock.wasUsed) {
+            if (this.getWorld().isReceivingRedstonePower(this.pos)) {
                 return PlayState.CONTINUE;
             } else {
                 return PlayState.STOP;

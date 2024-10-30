@@ -135,8 +135,16 @@ public class ArkhamAsylumItem extends ArmorItem implements GeoItem {
                 entity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.ARKHAM_ASYLUM_COWL);
     }
     public static void applySetEffect(LivingEntity entity) {
-        if (isWearingAll(entity)) {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 220, 0, false, false, false));
+        if (isWearingAll(entity) && !entity.hasStatusEffect(StatusEffects.NIGHT_VISION)) {
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false,
+                    false));
+        }
+
+        if (isWearingAll(entity) && entity.hasStatusEffect(StatusEffects.NIGHT_VISION)) {
+            if (entity.getStatusEffect(StatusEffects.NIGHT_VISION).getDuration() <= 220) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false,
+                        false));
+            }
         }
     }
 

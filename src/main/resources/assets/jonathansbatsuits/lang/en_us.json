@@ -103,6 +103,7 @@
   "item.jonathansbatsuits.smoke_pellet": "Smoke Pellet",
   "item.jonathansbatsuits.bat_glider" : "Bat-Glider",
   "item.jonathansbatsuits.detective_vision_lenses" : "Detective Vision Lenses",
+  "item.jonathansbatsuits.night_vision_goggles" : "Night Vision Goggles",
   "item.jonathansbatsuits.grapple_gun": "Grapple Gun (Prototype)",
 
   "item.jonathansbatsuits.laced_batarang.effect.empty": "Uncraftable Laced Batarang",
@@ -142,6 +143,7 @@
   "key.jonathansbatsuits.detective_vision": "Detective Vision Toggle",
   "key.jonathansbatsuits.batman_beyond_jets": "Batman Beyond Jets",
   "key.jonathansbatsuits.hook_detach_key": "Grapple Hook Detach",
+  "key.jonathansbatsuits.night_vision_key": "Night Vision Goggles",
 
   "effect.jonathansbatsuits.life_force_drain": "Life Force Drain",
 

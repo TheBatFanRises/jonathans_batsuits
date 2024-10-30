@@ -131,11 +131,29 @@ public class BatmanBeyondItem extends ArmorItem implements GeoItem {
                 entity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.BATMAN_BEYOND_COWL);
     }
     public static void applySetEffect(LivingEntity entity) {
-        if (isWearingAll(entity)) {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 220, 0, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20, 0, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 20, 0, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 20, 0, false, false, false));
+        if (isWearingAll(entity) && (!entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || !entity.hasStatusEffect(StatusEffects.STRENGTH) ||
+                !entity.hasStatusEffect(StatusEffects.SPEED) || !entity.hasStatusEffect(StatusEffects.JUMP_BOOST))) {
+
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 320, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 120, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 120, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 120, 0, false, false, false));
+        }
+        if (isWearingAll(entity) && !(entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.STRENGTH) ||
+                entity.hasStatusEffect(StatusEffects.SPEED) || entity.hasStatusEffect(StatusEffects.JUMP_BOOST))) {
+
+            if (entity.getStatusEffect(StatusEffects.NIGHT_VISION).getDuration() <= 220) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 320, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.STRENGTH).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 120, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.SPEED).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 120, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.JUMP_BOOST).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 120, 0, false, false, false));
+            }
         }
     }
 

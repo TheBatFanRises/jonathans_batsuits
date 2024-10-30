@@ -24,7 +24,6 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.client.RenderProvider;
 import software.bernie.geckolib.constant.DataTickets;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
@@ -125,13 +124,40 @@ public class HellbatItem extends ArmorItem implements GeoItem {
                 entity.getEquippedStack(EquipmentSlot.FEET).isOf(ModItems.HELLBAT_BOOTS);
     }
     public static void applySetEffect(LivingEntity entity) {
-        if (isWearingAll(entity)) {
-            entity.addStatusEffect(new StatusEffectInstance(ModEffects.LIFE_FORCE_DRAIN, 12000, 0, false, false, true));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 220, 0, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 20, 0, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 20, 1, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20, 1, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 20, 0, false, false, false));
+        if (isWearingAll(entity) && !(entity.hasStatusEffect(StatusEffects.HUNGER) || entity.hasStatusEffect(StatusEffects.NIGHT_VISION) ||
+                entity.hasStatusEffect(StatusEffects.FIRE_RESISTANCE) || entity.hasStatusEffect(StatusEffects.RESISTANCE) ||
+                entity.hasStatusEffect(StatusEffects.STRENGTH) || entity.hasStatusEffect(StatusEffects.SPEED))) {
+
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 12000, 2, false, false, true));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 320, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 120, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 120, 1, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 120, 1, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 120, 0, false, false, false));
+        }
+
+        if (isWearingAll(entity) && (entity.hasStatusEffect(StatusEffects.HUNGER) || entity.hasStatusEffect(StatusEffects.NIGHT_VISION) ||
+                entity.hasStatusEffect(StatusEffects.FIRE_RESISTANCE) || entity.hasStatusEffect(StatusEffects.RESISTANCE) ||
+                entity.hasStatusEffect(StatusEffects.STRENGTH) || entity.hasStatusEffect(StatusEffects.SPEED))) {
+
+            if (entity.getStatusEffect(StatusEffects.HUNGER).getDuration() <= 11900) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 12000, 0, false, false, true));
+            }
+            if (entity.getStatusEffect(StatusEffects.NIGHT_VISION).getDuration() <= 220) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 320, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.FIRE_RESISTANCE).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 120, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.RESISTANCE).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 120, 1, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.STRENGTH).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 120, 1, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.SPEED).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 120, 0, false, false, false));
+            }
         }
     }
 
@@ -144,7 +170,7 @@ public class HellbatItem extends ArmorItem implements GeoItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.literal("Suit is immune to Blindness").formatted(Formatting.GRAY));
         tooltip.add(Text.literal(" "));
-        tooltip.add(Text.literal("WARNING! EXTENSIVE USE DRAINS USER'S LIFE FORCE!").formatted(Formatting.RED, Formatting.BOLD));
+        tooltip.add(Text.literal("WARNING! EXTENSIVE USE DRAINS USER'S METABOLISM").formatted(Formatting.RED, Formatting.BOLD));
         tooltip.add(Text.literal("USE AS SPARINGLY AS POSSIBLE!").formatted(Formatting.RED, Formatting.BOLD));
         tooltip.add(Text.literal("RECOVERY PERIOD UPON REMOVAL: 10 MINUTES.").formatted(Formatting.RED, Formatting.BOLD));
         super.appendTooltip(stack, world, tooltip, context);

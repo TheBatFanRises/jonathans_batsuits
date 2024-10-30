@@ -33,7 +33,7 @@ public class GrappleGunItem extends Item implements GeoItem {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
-    public static boolean wasFired;
+    public static GrappleHookEntity hookEntity;
 
     public GrappleGunItem(Settings settings) {
         super(settings);
@@ -42,14 +42,20 @@ public class GrappleGunItem extends Item implements GeoItem {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        user.getItemCooldownManager().set(this, 40);
-        world.playSound(user, user.getBlockPos(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F,
-                0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
-        if (!world.isClient) {
-            GrappleHookEntity hookEntity = new GrappleHookEntity(world, user);
-            hookEntity.setOwner(user);
-            hookEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 3.0F, 1.0F);
-            world.spawnEntity(hookEntity);
+        if (hookEntity == null) {
+            world.playSound(user, user.getBlockPos(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F,
+                    0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+            if (!world.isClient) {
+                GrappleHookEntity hookEntity1 = new GrappleHookEntity(world, user);
+                hookEntity1.setOwner(user);
+                hookEntity1.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 3.0F, 1.0F);
+                world.spawnEntity(hookEntity1);
+            }
+            itemStack.damage(1, user, p -> p.sendToolBreakStatus(hand));
+        } else {
+            hookEntity.discard();
+            world.playSound(null, user.getBlockPos(), SoundEvents.ENTITY_FISHING_BOBBER_RETRIEVE, SoundCategory.NEUTRAL,
+                    1.0f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
         }
         return TypedActionResult.success(itemStack, world.isClient());
     }
@@ -79,7 +85,7 @@ public class GrappleGunItem extends Item implements GeoItem {
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<>(this, 20, state -> {
             state.getController().setAnimation(RawAnimation.begin().then("shot", Animation.LoopType.HOLD_ON_LAST_FRAME));
-            if (wasFired) {
+            if (hookEntity != null) {
                 return PlayState.CONTINUE;
             } else {
                 return PlayState.STOP;
@@ -95,7 +101,7 @@ public class GrappleGunItem extends Item implements GeoItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.literal("Range: 60 blocks").formatted(Formatting.GRAY));
-        tooltip.add(Text.literal("Press the Grapple Detach key to detach the hook.").formatted(Formatting.GRAY));
+        tooltip.add(Text.literal("Take out of active hand to detach the hook.").formatted(Formatting.GRAY));
         super.appendTooltip(stack, world, tooltip, context);
     }
 }

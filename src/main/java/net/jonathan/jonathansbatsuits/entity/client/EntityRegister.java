@@ -1,8 +1,12 @@
 package net.jonathan.jonathansbatsuits.entity.client;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.jonathan.jonathansbatsuits.JonathansBatsuits;
+import net.jonathan.jonathansbatsuits.block.ModBlocks;
+import net.jonathan.jonathansbatsuits.entity.client.block_entity.ResonanceEngineBlockEntity;
 import net.jonathan.jonathansbatsuits.entity.client.projectiles.*;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -33,6 +37,10 @@ public class EntityRegister<T extends Entity> {
     public static final EntityType<GrappleHookEntity> GRAPPLE_HOOK_ENTITY = Registry.register(Registries.ENTITY_TYPE,
             new Identifier(JonathansBatsuits.MOD_ID, "grapple_hook"), FabricEntityTypeBuilder.<GrappleHookEntity>create(SpawnGroup.MISC,
                     GrappleHookEntity::new).dimensions(EntityDimensions.fixed(0.5f, 0.5f)).trackRangeBlocks(60).trackedUpdateRate(20).build());
+
+    public static final BlockEntityType<ResonanceEngineBlockEntity> RESONANCE_ENGINE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
+            new Identifier(JonathansBatsuits.MOD_ID, "resonance_engine"), FabricBlockEntityTypeBuilder
+                    .<ResonanceEngineBlockEntity>create(ResonanceEngineBlockEntity::new, ModBlocks.RESONANCE_ENGINE).build());
 
     public static void registerModEntities() {
         JonathansBatsuits.LOGGER.info("Roger, ready to move out! (Registering " + JonathansBatsuits.MOD_ID + "entities)");

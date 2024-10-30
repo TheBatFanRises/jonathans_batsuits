@@ -25,6 +25,7 @@ public abstract class StatusEffectHandler extends Entity {
     protected void applyEffects(CallbackInfo info) {
         if (!this.getEntityWorld().isClient()) {
             LivingEntity owner = LivingEntity.class.cast(this);
+
             if (AdamWestItem.isWearingAll(owner)) {
                 AdamWestItem.applySetEffect(owner);
             }
@@ -45,10 +46,6 @@ public abstract class StatusEffectHandler extends Entity {
             }
             if (RobertPattinsonItem.isWearingAll(owner)) {
                 RobertPattinsonItem.applySetEffect(owner);
-            } else if (owner.hasStatusEffect(StatusEffects.HEALTH_BOOST)) {
-                if (Objects.requireNonNull(owner.getStatusEffect(StatusEffects.HEALTH_BOOST)).getDuration() == -1) {
-                    owner.removeStatusEffect(StatusEffects.HEALTH_BOOST);
-                }
             }
             if (ThermalSuitItem.isWearingAll(owner)) {
                 ThermalSuitItem.applySetEffect(owner);
@@ -76,6 +73,9 @@ public abstract class StatusEffectHandler extends Entity {
             }
             if (ArkhamAsylumItem.isWearingAll(owner)) {
                 ArkhamAsylumItem.applySetEffect(owner);
+            }
+            if (TheBatmanWhoWeepsItem.isWearingAll(owner)) {
+                TheBatmanWhoWeepsItem.applySetEffect(owner);
             }
         }
     }

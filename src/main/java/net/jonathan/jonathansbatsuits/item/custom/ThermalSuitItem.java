@@ -15,6 +15,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stat.Stat;
 import software.bernie.geckolib.animatable.GeoItem;
 import software.bernie.geckolib.animatable.client.RenderProvider;
 import software.bernie.geckolib.constant.DataTickets;
@@ -110,9 +111,19 @@ public class ThermalSuitItem extends ArmorItem implements GeoItem {
                 entity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.THERMAL_SUIT_COWL);
     }
     public static void applySetEffect(LivingEntity entity) {
-        if (isWearingAll(entity)) {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 220, 0, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 20, 0, false, false, false));
+        if (isWearingAll(entity) && !(entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.FIRE_RESISTANCE))) {
+
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 120, 0, false, false, false));
+        }
+        if (isWearingAll(entity) && (entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.FIRE_RESISTANCE))) {
+
+            if (entity.getStatusEffect(StatusEffects.NIGHT_VISION).getDuration() <= 220) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.FIRE_RESISTANCE).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 120, 0, false, false, false));
+            }
         }
     }
 

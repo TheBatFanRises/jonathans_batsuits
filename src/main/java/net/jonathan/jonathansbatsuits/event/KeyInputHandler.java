@@ -7,7 +7,6 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.jonathan.jonathansbatsuits.networking.ModPackets;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.client.util.ParticleUtil;
 import org.lwjgl.glfw.GLFW;
 
 public class KeyInputHandler {
@@ -26,21 +25,24 @@ public class KeyInputHandler {
             InputUtil.Type.KEYSYM,
             GLFW.GLFW_KEY_O,
             "key.category.jonathansbatsuits.batsuits"));
-    public static KeyBinding hookDetachKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-            "key.jonathansbatsuits.hook_detach_key",
+    public static KeyBinding nvKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key.jonathansbatsuits.night_vision_key",
             InputUtil.Type.KEYSYM,
-            GLFW.GLFW_KEY_G,
-            "key.category.jonathansbatsuits.batsuits"));
+            GLFW.GLFW_KEY_UNKNOWN,
+            "key.category.jonathanbatsuits.batsuits"));
+
     public static boolean DVtoggle;
-    public static float abilityTick = 0;
-    public static float bbTick = 0;
-    public static float dvTick = 0;
+    public static float abilityTick = 400;
+    public static float bbTick = 200;
+    public static float dvTick = 400;
+    public static float nvTick = 2400;
 
     public static void registerKeyInputs() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             abilityTick++;
             bbTick++;
             dvTick++;
+            nvTick++;
             if (abilityKey.wasPressed() && abilityTick >= 400) {
                 ClientPlayNetworking.send(ModPackets.SUIT_ABILITY_ID, PacketByteBufs.create());
                 abilityTick = 0;
@@ -51,6 +53,10 @@ public class KeyInputHandler {
             }
             if (bbKey.wasPressed() && bbTick >= 200) {
                 ClientPlayNetworking.send(ModPackets.BATMAN_BEYOND_JETS, PacketByteBufs.create());
+            }
+            if (nvKey.wasPressed() && nvTick >= 2400) {
+                ClientPlayNetworking.send(ModPackets.NIGHT_VISION_ID, PacketByteBufs.create());
+                nvTick = 0;
             }
         });
     }

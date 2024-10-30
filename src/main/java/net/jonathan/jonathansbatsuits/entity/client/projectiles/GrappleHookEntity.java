@@ -1,17 +1,18 @@
 package net.jonathan.jonathansbatsuits.entity.client.projectiles;
 
 import net.jonathan.jonathansbatsuits.entity.client.EntityRegister;
-import net.jonathan.jonathansbatsuits.event.KeyInputHandler;
+import net.jonathan.jonathansbatsuits.item.ModItems;
 import net.jonathan.jonathansbatsuits.item.custom.GrappleGunItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -34,8 +35,10 @@ public class GrappleHookEntity extends PersistentProjectileEntity implements Geo
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
+        Entity shooter = this.getOwner();
         Entity hookedEntity = entityHitResult.getEntity();
-        Vec3d distance = this.getOwner().getPos().subtract(hookedEntity.getPos());
+        assert shooter != null;
+        Vec3d distance = shooter.getPos().subtract(hookedEntity.getPos());
         Vec3d motion = distance.normalize();
         if (Math.abs(distance.y) < 0.1D) {
             motion = new Vec3d(motion.x, 0, motion.z);
@@ -45,21 +48,20 @@ public class GrappleHookEntity extends PersistentProjectileEntity implements Geo
         }
 
         hookedEntity.setVelocity(motion);
-        this.discard();
+        this.kill();
     }
 
     @Override
     public void tick() {
-        super.tick();
-        if (this.getOwner() == null || this.isInLava() || KeyInputHandler.hookDetachKey.wasPressed()) {
-            this.discard();
+        Entity shooter = this.getOwner();
+        if (shooter == null || this.isInLava() || this.getY() >= shooter.getY() + 60) {
+            this.kill();
         }
-        /**
         if (this.isSubmergedInWater()) {
             this.setVelocity(this.getVelocity().x * 2, this.getVelocity().y * 2, this.getVelocity().z * 2);
         }
-         */
-        Vec3d distance = this.getOwner().getPos().subtract(this.getPos());
+        assert shooter != null;
+        Vec3d distance = shooter.getPos().subtract(this.getPos());
         Vec3d motion = distance.normalize();
         if (this.inGround) {
             if (Math.abs(distance.y) < 0.1D) {
@@ -69,18 +71,53 @@ public class GrappleHookEntity extends PersistentProjectileEntity implements Geo
                 motion = new Vec3d(0, motion.y, 0);
             }
 
-            this.getOwner().setVelocity(-1 * motion.x, -1 * motion.y, -1 * motion.z);
+            shooter.setVelocity(-1 * motion.x, -1 * motion.y, -1 * motion.z);
 
             if (distance.length() <= 1 || distance.length() >= 60) {
-                this.discard();
+                this.kill();
             }
-            GrappleGunItem.wasFired = this.isRemoved();
         }
+
+        LivingEntity livingShooter = (LivingEntity)shooter;
+        ItemStack mainHand = livingShooter.getMainHandStack();
+        ItemStack offHand = livingShooter.getOffHandStack();
+
+        if (mainHand.getItem() != ModItems.GRAPPLE_GUN && offHand.getItem() != ModItems.GRAPPLE_GUN) {
+            this.discard();
+        }
+        super.tick();
+    }
+
+    public void use() {
+        this.remove(RemovalReason.DISCARDED);
     }
 
     @Override
     protected ItemStack asItemStack() {
         return ItemStack.EMPTY;
+    }
+
+    public void remove(RemovalReason reason) {
+        super.remove(reason);
+        this.setPlayerGrapple(null);
+    }
+
+    @Override
+    public void onRemoved() {
+        this.setPlayerGrapple(null);
+    }
+
+    @Override
+    public void setOwner(@Nullable Entity entity) {
+        super.setOwner(entity);
+        this.setPlayerGrapple(this);
+    }
+
+    private void setPlayerGrapple(@Nullable GrappleHookEntity hookEntity) {
+        PlayerEntity playerEntity = (PlayerEntity)this.getOwner();
+        if (playerEntity != null) {
+            GrappleGunItem.hookEntity = hookEntity;
+        }
     }
 
     @Override

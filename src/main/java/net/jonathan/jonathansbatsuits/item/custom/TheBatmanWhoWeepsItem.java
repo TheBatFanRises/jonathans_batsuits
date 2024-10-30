@@ -127,9 +127,19 @@ public class TheBatmanWhoWeepsItem extends ArmorItem implements GeoItem {
                 entity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.THE_BATMAN_WHO_WEEPS_MASK);
     }
     public static void applySetEffect(LivingEntity entity) {
-        if (isWearingAll(entity)) {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 220, 0, false, false,
-                    false));
+        if (isWearingAll(entity) && !(entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.SPEED))) {
+
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 320, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 120, 0, false, false, false));
+        }
+        if (isWearingAll(entity) && (entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.SPEED))) {
+
+            if (entity.getStatusEffect(StatusEffects.NIGHT_VISION).getDuration() <= 220) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 320, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.SPEED).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 120, 0, false, false, false));
+            }
         }
     }
 

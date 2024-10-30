@@ -221,6 +221,9 @@ public class ModItems {
     //Detective Vision Lenses
     public static final Item DETECTIVE_VISION_LENSES = registerItem("detective_vision_lenses", new DetectiveVisionItem(new FabricItemSettings()));
 
+    //Night Vision Goggles
+    public static final Item NIGHT_VISION_GOGGLES = registerItem("night_vision_goggles", new NightVisionGogglesItem(new FabricItemSettings()));
+
     //Grapple Gun
     public static final Item GRAPPLE_GUN = registerItem("grapple_gun", new GrappleGunItem(new FabricItemSettings()));
 

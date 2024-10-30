@@ -120,6 +120,7 @@ public class ModItemGroup {
                 entries.add(ModItems.BAT_DART);
                 entries.add(ModItems.EXPLOSIVE_BATARANG);
                 entries.add(ModItems.GRAPPLE_GUN);
+                entries.add(ModItems.NIGHT_VISION_GOGGLES);
             }).build());
     public static final ItemGroup VISIONSTEPS_ITEMS = Registry.register(Registries.ITEM_GROUP, new Identifier(JonathansBatsuits.MOD_ID,
             "visionsteps_items"), FabricItemGroup.builder().displayName(Text.translatable("itemgroup.visionsteps_items"))

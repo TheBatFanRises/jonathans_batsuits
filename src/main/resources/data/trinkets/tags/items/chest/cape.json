@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "jonathansbatsuits:bat_glider"
+    "jonathansbatsuits:bat_glider",
+    "minecraft:elytra"
   ]
 }

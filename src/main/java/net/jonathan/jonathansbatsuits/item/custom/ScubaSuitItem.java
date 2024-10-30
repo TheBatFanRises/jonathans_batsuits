@@ -110,11 +110,16 @@ public class ScubaSuitItem extends ArmorItem implements GeoItem {
                 entity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.SCUBA_SUIT_BREATHING_APPARATUS);
     }
     public static void applySetEffect(LivingEntity entity) {
-        if (isWearingAll(entity)) {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 220, 0, false, false, false));
-            if (!entity.isSubmergedInWater()) {
-                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 1200, 0, false, false,
-                        false));
+        if (isWearingAll(entity) && !(entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.WATER_BREATHING))) {
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 1200, 0, false, false, false));
+        }
+        if (isWearingAll(entity) && (entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.WATER_BREATHING))) {
+            if (entity.getStatusEffect(StatusEffects.NIGHT_VISION).getDuration() <= 220) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.WATER_BREATHING).getDuration() <= 1120 && !entity.isSubmergedInWater()) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 1200, 0, false, false, false));
             }
         }
     }

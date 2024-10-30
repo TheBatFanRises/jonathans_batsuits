@@ -115,11 +115,19 @@ public class StealthSuitItem extends ArmorItem implements GeoItem {
                 entity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.STEALTH_SUIT_COWL);
     }
     public static void applySetEffect(LivingEntity entity) {
-        if (isWearingAll(entity)) {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 220, 0, false, false,
-                    false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 110, 0, false, false,
-                    false));
+        if (isWearingAll(entity) && !(entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.INVISIBILITY))) {
+
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 200, 0, false, false, false));
+        }
+        if (isWearingAll(entity) && (entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.INVISIBILITY))) {
+
+            if (entity.getStatusEffect(StatusEffects.NIGHT_VISION).getDuration() <= 220) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.INVISIBILITY).getDuration() <= 120) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 200, 0, false, false, false));
+            }
         }
     }
 

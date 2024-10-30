@@ -111,12 +111,36 @@ public class BattleArmorV1Item extends ArmorItem implements GeoItem {
                 entity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.BATTLE_ARMOR_V1_HELMET);
     }
     public static void applySetEffect(LivingEntity entity) {
-        if (isWearingAll(entity)) {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 220, 0, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20, 1, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 20, 2, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20, 2, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 20, 0, false, false, false));
+
+        if (isWearingAll(entity) && !(entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.STRENGTH) ||
+                entity.hasStatusEffect(StatusEffects.RESISTANCE) || entity.hasStatusEffect(StatusEffects.SLOWNESS) ||
+                entity.hasStatusEffect(StatusEffects.MINING_FATIGUE))) {
+
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 120, 1, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 120, 2, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 120, 2, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 120, 0, false, false, false));
+        }
+        if (isWearingAll(entity) && (entity.hasStatusEffect(StatusEffects.NIGHT_VISION) && entity.hasStatusEffect(StatusEffects.STRENGTH) &&
+                entity.hasStatusEffect(StatusEffects.RESISTANCE) && entity.hasStatusEffect(StatusEffects.SLOWNESS) &&
+                entity.hasStatusEffect(StatusEffects.MINING_FATIGUE))) {
+
+            if (entity.getStatusEffect(StatusEffects.NIGHT_VISION).getDuration() <= 220) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.STRENGTH).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 120, 1, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.RESISTANCE).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 120, 2, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.SLOWNESS).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 120, 2, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.MINING_FATIGUE).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 120, 0, false, false, false));
+            }
         }
     }
 

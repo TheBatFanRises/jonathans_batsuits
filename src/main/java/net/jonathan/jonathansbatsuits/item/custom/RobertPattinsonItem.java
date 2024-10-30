@@ -133,11 +133,29 @@ public class RobertPattinsonItem extends ArmorItem implements GeoItem {
                 entity.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.ROBERT_PATTINSON_COWL);
     }
     public static void applySetEffect(LivingEntity entity) {
-        if (isWearingAll(entity)) {
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 220, 0, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.HEALTH_BOOST, -1, 1, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20, 0, false, false, false));
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20, 0, false, false, false));
+        if (isWearingAll(entity) && !(entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.HEALTH_BOOST) ||
+                entity.hasStatusEffect(StatusEffects.SLOWNESS) || entity.hasStatusEffect(StatusEffects.STRENGTH))) {
+
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.HEALTH_BOOST, 300, 1, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 0, false, false, false));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 100, 0, false, false, false));
+        }
+        if (isWearingAll(entity) && (entity.hasStatusEffect(StatusEffects.NIGHT_VISION) || entity.hasStatusEffect(StatusEffects.HEALTH_BOOST) ||
+                entity.hasStatusEffect(StatusEffects.SLOWNESS) || entity.hasStatusEffect(StatusEffects.STRENGTH))) {
+
+            if (entity.getStatusEffect(StatusEffects.NIGHT_VISION).getDuration() <= 220) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.HEALTH_BOOST).getDuration() <= 220) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.HEALTH_BOOST, 300, 1, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.SLOWNESS).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 0, false, false, false));
+            }
+            if (entity.getStatusEffect(StatusEffects.STRENGTH).getDuration() <= 20) {
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 100, 0, false, false, false));
+            }
         }
     }
 

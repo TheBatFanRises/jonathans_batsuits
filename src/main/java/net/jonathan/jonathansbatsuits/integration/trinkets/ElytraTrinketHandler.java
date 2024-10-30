@@ -4,13 +4,18 @@ import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.fabricmc.fabric.api.entity.event.v1.EntityElytraEvents;
+import net.fabricmc.fabric.api.entity.event.v1.FabricElytraItem;
 import net.jonathan.jonathansbatsuits.JonathansBatsuits;
 import net.jonathan.jonathansbatsuits.event.custom_events.ModElytraItem;
+import net.jonathan.jonathansbatsuits.item.ModItems;
 import net.jonathan.jonathansbatsuits.item.custom.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.Pair;
 
 import java.util.List;
@@ -23,8 +28,11 @@ public class ElytraTrinketHandler {
     public static BiConsumer<LivingEntity, ItemStack> onBreak = (entity, chestStack) -> {
         entity.sendEquipmentBreakStatus(EquipmentSlot.CHEST);
     };
-    private static boolean isElytra(ItemStack stack) {
+    private static boolean isBatGlider(ItemStack stack) {
         return stack.getItem() instanceof ModElytraItem;
+    }
+    private static boolean isElytra(ItemStack stack) {
+        return stack.getItem() == Items.ELYTRA;
     }
 
     public static void register() {
@@ -34,12 +42,12 @@ public class ElytraTrinketHandler {
 
         slotProvider = (entity, slotGetter) -> {
             ItemStack itemStack = (ItemStack)slotGetter.apply(EquipmentSlot.CHEST);
-            if (isElytra(itemStack)) {
+            if (isBatGlider(itemStack)) {
                 return itemStack;
             } else {
                 Optional<TrinketComponent> trinketComponent = TrinketsApi.getTrinketComponent(entity);
                 if (trinketComponent.isPresent()) {
-                    List<Pair<SlotReference, ItemStack>> equipped = ((TrinketComponent)trinketComponent.get()).getEquipped(ElytraTrinketHandler::isElytra);
+                    List<Pair<SlotReference, ItemStack>> equipped = ((TrinketComponent)trinketComponent.get()).getEquipped(ElytraTrinketHandler::isBatGlider);
                     if (!equipped.isEmpty()) {
                         return (ItemStack)((Pair)equipped.get(0)).getRight();
                     }
@@ -50,7 +58,7 @@ public class ElytraTrinketHandler {
         onBreak = (entity, chestStack) -> {
             Optional<TrinketComponent> trinketComponent = TrinketsApi.getTrinketComponent(entity);
             if (trinketComponent.isPresent()) {
-                List<Pair<SlotReference, ItemStack>> equipped = ((TrinketComponent)trinketComponent.get()).getEquipped(ElytraTrinketHandler::isElytra);
+                List<Pair<SlotReference, ItemStack>> equipped = ((TrinketComponent)trinketComponent.get()).getEquipped(ElytraTrinketHandler::isBatGlider);
 
                 for (Pair<SlotReference, ItemStack> slot : equipped) {
                     ItemStack slotStack = (ItemStack)slot.getRight();
@@ -67,7 +75,7 @@ public class ElytraTrinketHandler {
     private static boolean useElytraTrinket(LivingEntity entity, boolean tickElytra) {
         Optional<TrinketComponent> trinketComponent = TrinketsApi.getTrinketComponent(entity);
         if (trinketComponent.isPresent()) {
-            List<Pair<SlotReference, ItemStack>> equipped = ((TrinketComponent) trinketComponent.get()).getEquipped(ElytraTrinketHandler::isElytra);
+            List<Pair<SlotReference, ItemStack>> equipped = ((TrinketComponent) trinketComponent.get()).getEquipped(ElytraTrinketHandler::isBatGlider);
 
             for (Pair<SlotReference, ItemStack> slot : equipped) {
                 ItemStack stack = (ItemStack) slot.getRight();
@@ -79,6 +87,18 @@ public class ElytraTrinketHandler {
                     if (modElytraItem.useCustomElytra(entity, stack, tickElytra)) {
                         return true;
                     }
+                }
+            }
+            List<Pair<SlotReference, ItemStack>> equippedElytra = ((TrinketComponent) trinketComponent.get()).getEquipped(ElytraTrinketHandler::isElytra);
+
+            for (Pair<SlotReference, ItemStack> slot : equippedElytra) {
+                ItemStack stack = (ItemStack) slot.getRight();
+                Item item = stack.getItem();
+                if (item instanceof FabricElytraItem && (entity.getEquippedStack(EquipmentSlot.CHEST).isOf(ModItems.HELLBAT_CHESTPLATE) ||
+                        entity.getEquippedStack(EquipmentSlot.CHEST).isOf(ModItems.BATMAN_BEYOND_CHESTPLATE))) {
+                    PlayerEntity player = (PlayerEntity) entity;
+                    int capeSlot = player.getInventory().getSlotWithStack(stack);
+                    player.getInventory().isValid(capeSlot, stack);
                 }
             }
         }
